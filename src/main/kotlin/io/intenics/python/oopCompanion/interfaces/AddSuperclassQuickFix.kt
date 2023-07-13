@@ -42,7 +42,7 @@ class AddSuperclassQuickFix(private val newSuperClass: String) : LocalQuickFix {
                 openingBracket
             )
         } else {
-            pyClassNameIdentifier.addAfter(superClassExpression, pyClassNameIdentifier)
+            pyClass.addAfter(superClassExpression, pyClassNameIdentifier)
         }
     }
 }

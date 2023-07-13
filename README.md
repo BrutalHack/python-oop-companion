@@ -5,14 +5,23 @@
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/io.intenics.python.fileNameMismatch.svg)](https://plugins.jetbrains.com/plugin/io.intenics.python.fileNameMismatch)
 
 <!-- Plugin description -->
-Keep python file names synced to their class names!
+Make writing OOP Python feel more like writing typescript!
 
-Contains inspection to find wrongly named files and quickfix to rename them and their usages.
+Each feature can be enabled individually:
+- Keep file names in sync with the classes within 
+- Ensure all empty methods in ABC (abstract base classes) are marked @abstractmethod 
+- Support for "Interface"-based architecture
+    - Define your Prefix or Suffix for naming of Interface classes
+    - Ensure ABC classes with only @abstractmethods have the Interface Prefix/Suffix
+    - Ensure classes with the Interface Prefix/Suffix inherit from ABC
+- Exclude paths (e.g. virtualenv, third-party code, scripts) from validation
+    - via simple "path contains this string" 
+    - via glob patterns
+    - via regex patterns
 
-This plugin aims to make working with object-oriented Python code easier.
+This plugin was developed during an internal hackathon event at [Intenics](https://www.intenics.io).
 
-The inspection ignores all files within "venv" or ".venv" directories.
-
+If you're based in germany and looking for a dev job with AWS, check them out :) 
 <!-- Plugin description end -->
 
 ## Installation
@@ -28,6 +37,11 @@ The inspection ignores all files within "venv" or ".venv" directories.
   Download the [latest release](https://github.com/intenics/pycharm-file-names/releases/latest) and install it manually
   using
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
+
+## Dev Environment Setup
+
+1. Recommended JVM: Amazon Coretto 11
+2. Recommended IDE: IntelliJ IDEA Ultimate (latest version)
 
 ---
 Plugin based on the [IntelliJ Platform Plugin Template][template].
