@@ -2,21 +2,21 @@ package io.intenics.pycharmfilenames.inspections
 
 import com.intellij.codeInsight.daemon.ProblemHighlightFilter
 import com.intellij.codeInspection.*
-import com.intellij.openapi.application.runWriteAction
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiElementVisitor
 import com.intellij.psi.PsiFile
+import com.intellij.refactoring.RefactoringFactory
 import com.jetbrains.python.psi.PyClass
 import com.jetbrains.python.psi.PyElementVisitor
 import com.jetbrains.python.psi.PyFile
 import org.jetbrains.annotations.Nls
 import org.jetbrains.annotations.NotNull
 
-class PythonFileNameInspection : LocalInspectionTool() {
+class FileNameMismatchInspectionTool : LocalInspectionTool() {
 
-    var log: Logger = Logger.getInstance(PythonFileNameInspection::class.java)
+    var log: Logger = Logger.getInstance(FileNameMismatchInspectionTool::class.java)
 
     @Nls
     @NotNull
@@ -81,7 +81,7 @@ class PythonFileNameInspection : LocalInspectionTool() {
 
         init {
             // convert PascalCase to snake_case including the first character
-            expectedName = convertPascalCaseToSnakeCase(className)
+            expectedName = "${convertPascalCaseToSnakeCase(className)}.py"
         }
 
         @NotNull
@@ -95,8 +95,11 @@ class PythonFileNameInspection : LocalInspectionTool() {
         }
 
         override fun applyFix(project: Project, descriptor: ProblemDescriptor) {
-            val file = descriptor.psiElement.containingFile.virtualFile
-            runWriteAction { file.rename(this, "$expectedName.py") }
+
+            val refactoringFactory = RefactoringFactory.getInstance(project)
+            val fileElement = descriptor.psiElement.containingFile as PyFile
+            val rename = refactoringFactory.createRename(fileElement, expectedName)
+            rename.run()
         }
     }
 

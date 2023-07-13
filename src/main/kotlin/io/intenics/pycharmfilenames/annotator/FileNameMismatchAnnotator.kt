@@ -7,10 +7,10 @@ import com.intellij.openapi.diagnostic.Logger
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.jetbrains.python.psi.PyClass
-import io.intenics.pycharmfilenames.inspections.PythonFileNameInspection
+import io.intenics.pycharmfilenames.inspections.FileNameMismatchInspectionTool
 
 class FileNameMismatchAnnotator : Annotator {
-    var log: Logger = Logger.getInstance(PythonFileNameInspection::class.java)
+    var log: Logger = Logger.getInstance(FileNameMismatchInspectionTool::class.java)
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
 
@@ -29,7 +29,7 @@ class FileNameMismatchAnnotator : Annotator {
         val className = firstClass.nameIdentifier?.text
         val fileName = element.name
         if (className != null) {
-            val expectedName = "${PythonFileNameInspection.convertPascalCaseToSnakeCase(className)}.py"
+            val expectedName = "${FileNameMismatchInspectionTool.convertPascalCaseToSnakeCase(className)}.py"
             if (expectedName == fileName) {
                 log.info("File name $fileName matches class name $className.")
                 return

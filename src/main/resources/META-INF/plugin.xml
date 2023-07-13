@@ -11,9 +11,8 @@
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="io.intenics.pycharmfilenames.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
         <localInspection language="Python"
-                         implementationClass="io.intenics.pycharmfilenames.inspections.PythonFileNameInspection"
+                         implementationClass="io.intenics.pycharmfilenames.inspections.FileNameMismatchInspectionTool"
                          displayName="PythonFileNameInspection" groupName="PythonFileNameInspection"
                          shortName="PythonFileNameInspection"
                          enabledByDefault="true" level="ERROR"/>
@@ -23,8 +22,4 @@
 
     </extensions>
 
-    <applicationListeners>
-        <listener class="io.intenics.pycharmfilenames.listeners.MyFrameStateListener"
-                  topic="com.intellij.ide.FrameStateListener"/>
-    </applicationListeners>
 </idea-plugin>
