@@ -1,6 +1,6 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>io.intenics.python.FileNameMismatch</id>
+    <id>io.intenics.python.fileNameMismatch</id>
     <name>class_name.py</name>
     <vendor>Intenics</vendor>
     <idea-version since-build="221"/>
