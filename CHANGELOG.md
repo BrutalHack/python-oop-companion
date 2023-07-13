@@ -4,7 +4,11 @@
 
 ## [Unreleased]
 
-## [0.2.1] - 2023-04-12
+## [1.0.0] - 2023-04-17
+
+- First public release
+- Last obvious bugs fixed
+- Basic Functionality is working as intended
 
 ### Added
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
