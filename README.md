@@ -1,11 +1,11 @@
 # class_name.py
 
 ![Build](https://github.com/intenics/pycharm-file-names/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/io.intenics.python.FileNameMismatch
-.svg)](https://plugins.jetbrains.com/plugin/io.intenics.python.FileNameMismatch
+[![Version](https://img.shields.io/jetbrains/plugin/v/io.intenics.python.fileNameMismatch
+.svg)](https://plugins.jetbrains.com/plugin/io.intenics.python.fileNameMismatch
 )
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/io.intenics.python.FileNameMismatch
-.svg)](https://plugins.jetbrains.com/plugin/io.intenics.python.FileNameMismatch
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/io.intenics.python.fileNameMismatch
+.svg)](https://plugins.jetbrains.com/plugin/io.intenics.python.fileNameMismatch
 )
 
 ## Template ToDo list
