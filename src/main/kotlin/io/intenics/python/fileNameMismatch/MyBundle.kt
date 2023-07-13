@@ -1,4 +1,4 @@
-package io.intenics.pycharmfilenames
+package io.intenics.python.fileNameMismatch
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls

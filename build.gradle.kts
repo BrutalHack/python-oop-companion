@@ -38,6 +38,7 @@ intellij {
     version.set(properties("platformVersion"))
     type.set(properties("platformType"))
 
+    updateSinceUntilBuild.set(false)
     // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
     plugins.set(properties("platformPlugins").map { it.split(',').map(String::trim).filter(String::isNotEmpty) })
 }
@@ -68,8 +69,6 @@ tasks {
 
     patchPluginXml {
         version.set(properties("pluginVersion"))
-        sinceBuild.set(properties("pluginSinceBuild"))
-        untilBuild.set(properties("pluginUntilBuild"))
 
         // Extract the <!-- Plugin description --> section from README.md and provide for the plugin's manifest
         pluginDescription.set(providers.fileContents(layout.projectDirectory.file("README.md")).asText.map {
@@ -89,10 +88,10 @@ tasks {
         changeNotes.set(properties("pluginVersion").map { pluginVersion ->
             with(changelog) {
                 renderItem(
-                        (getOrNull(pluginVersion) ?: getUnreleased())
-                                .withHeader(false)
-                                .withEmptySections(false),
-                        Changelog.OutputType.HTML,
+                    (getOrNull(pluginVersion) ?: getUnreleased())
+                        .withHeader(false)
+                        .withEmptySections(false),
+                    Changelog.OutputType.HTML,
                 )
             }
         })
@@ -119,6 +118,10 @@ tasks {
         // The pluginVersion is based on the SemVer (https://semver.org) and supports pre-release labels, like 2.1.7-alpha.3
         // Specify pre-release label to publish the plugin in a custom Release Channel automatically. Read more:
         // https://plugins.jetbrains.com/docs/intellij/deployment.html#specifying-a-release-channel
-        channels.set(properties("pluginVersion").map { listOf(it.split('-').getOrElse(1) { "default" }.split('.').first()) })
+        channels.set(properties("pluginVersion").map {
+            listOf(
+                it.split('-').getOrElse(1) { "default" }.split('.').first()
+            )
+        })
     }
 }
