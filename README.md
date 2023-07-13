@@ -1,12 +1,8 @@
 # class_name.py
 
-![Build](https://github.com/intenics/pycharm-file-names/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/io.intenics.python.fileNameMismatch
-.svg)](https://plugins.jetbrains.com/plugin/io.intenics.python.fileNameMismatch
-)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/io.intenics.python.fileNameMismatch
-.svg)](https://plugins.jetbrains.com/plugin/io.intenics.python.fileNameMismatch
-)
+![Build](https://github.com/intenics/class_name_py/workflows/Build/badge.svg)
+[![Version](https://img.shields.io/jetbrains/plugin/v/io.intenics.python.fileNameMismatch.svg)](https://plugins.jetbrains.com/plugin/io.intenics.python.fileNameMismatch)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/io.intenics.python.fileNameMismatch.svg)](https://plugins.jetbrains.com/plugin/io.intenics.python.fileNameMismatch)
 
 ## Template ToDo list
 - [x] Create a new [IntelliJ Platform Plugin Template][template] project.
