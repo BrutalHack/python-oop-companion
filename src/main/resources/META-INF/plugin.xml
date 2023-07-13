@@ -15,9 +15,16 @@
         <!--suppress PluginXmlValidity -->
         <localInspection language="Python"
                          implementationClass="io.intenics.python.oopCompanion.abstractmethod.MissingAbstractMethodDecoratorInspection"
+                         groupPath="Python"
                          shortName="MissingAbstractMethodDecorator"
                          displayName="Empty method in ABC class should be abstract" groupName="Python"
                          enabledByDefault="true" level="ERROR"/>
+        <!--suppress PluginXmlValidity -->
+        <localInspection language="Python"
+                         implementationClass="io.intenics.python.oopCompanion.interfaces.InterfaceNamingConventionInspection"
+                         displayName="Interfaces should follow Naming Conventions" groupName="Python"
+                         groupPath="Python" shortName="InterfaceNamingConvention" level="WARNING"
+                         enabledByDefault="true"/>
         <!--suppress PluginXmlValidity -->
         <annotator language="Python"
                    implementationClass="io.intenics.python.oopCompanion.fileNameMismatch.FileNameMismatchAnnotator"
