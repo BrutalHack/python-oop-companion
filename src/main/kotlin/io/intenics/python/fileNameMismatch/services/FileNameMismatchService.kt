@@ -7,7 +7,7 @@ class FileNameMismatchService(file: PsiFile) {
 
     val isMismatch = doesNotMatchFirstTypeName(file)
     val firstClass = getFirstClass(file)
-    val firstClassName = getClassName(firstClass!!)
+    val firstClassName = getClassName(firstClass)
     val expectedName = getExpectedFileName(firstClassName!!)
 
     private fun doesNotMatchFirstTypeName(psiFile: PsiFile): Boolean {
@@ -24,7 +24,10 @@ class FileNameMismatchService(file: PsiFile) {
         return classes.firstOrNull()
     }
 
-    private fun getClassName(pyClass: PyClass): String? {
+    private fun getClassName(pyClass: PyClass?): String? {
+        if (pyClass == null){
+            return null
+        }
         return pyClass.nameIdentifier?.text
     }
 
