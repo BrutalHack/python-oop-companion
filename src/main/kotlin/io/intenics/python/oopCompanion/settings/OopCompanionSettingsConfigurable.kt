@@ -27,6 +27,7 @@ class OopCompanionSettingsConfigurable : SearchableConfigurable {
         state.isClassNameAnnotatorEnabled != component!!.isClassNameAnnotatorEnabled ||
                 state.isAbstractMethodValidationEnabled != component!!.isAbstractMethodValidationEnabled ||
                 state.isInterfaceNamingConventionEnabled != component!!.isInterfaceNamingConventionEnabled ||
+                state.isInterfaceMissingAbcEnabled != component!!.isInterfaceMissingAbcEnabled ||
                 state.excludeContainPaths != component!!.excludeContainPaths ||
                 state.excludeRegexPatterns != component!!.excludeRegexPatterns ||
                 state.excludeGlobPatterns != component!!.excludeGlobPatterns ||
@@ -37,6 +38,7 @@ class OopCompanionSettingsConfigurable : SearchableConfigurable {
         state.isClassNameAnnotatorEnabled = component!!.isClassNameAnnotatorEnabled
         state.isAbstractMethodValidationEnabled = component!!.isAbstractMethodValidationEnabled
         state.isInterfaceNamingConventionEnabled = component!!.isInterfaceNamingConventionEnabled
+        state.isInterfaceMissingAbcEnabled = component!!.isInterfaceMissingAbcEnabled
 
         state.excludeContainPaths = component!!.excludeContainPaths
         state.excludeRegexPatterns = component!!.excludeRegexPatterns
@@ -50,6 +52,7 @@ class OopCompanionSettingsConfigurable : SearchableConfigurable {
         component!!.isClassNameAnnotatorEnabled = state.isClassNameAnnotatorEnabled
         component!!.isAbstractMethodValidationEnabled = state.isAbstractMethodValidationEnabled
         component!!.isInterfaceNamingConventionEnabled = state.isInterfaceNamingConventionEnabled
+        component!!.isInterfaceMissingAbcEnabled = state.isInterfaceMissingAbcEnabled
 
         component!!.excludeContainPaths = state.excludeContainPaths
         component!!.excludeRegexPatterns = state.excludeRegexPatterns

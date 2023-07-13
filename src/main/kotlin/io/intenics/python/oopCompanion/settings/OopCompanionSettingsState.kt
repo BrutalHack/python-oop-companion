@@ -20,7 +20,8 @@ data class OopCompanionSettingsState(
     var interfaceSuffix: String = "",
     var isClassNameAnnotatorEnabled: Boolean = true,
     var isAbstractMethodValidationEnabled: Boolean = true,
-    var isInterfaceNamingConventionEnabled: Boolean = true
+    var isInterfaceNamingConventionEnabled: Boolean = true,
+    var isInterfaceMissingAbcEnabled: Boolean = true
 ) : PersistentStateComponent<OopCompanionSettingsState> {
 
     override fun getState(): OopCompanionSettingsState {

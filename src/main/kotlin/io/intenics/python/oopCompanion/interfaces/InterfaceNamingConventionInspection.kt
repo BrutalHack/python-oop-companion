@@ -9,6 +9,15 @@ import com.jetbrains.python.psi.PyClass
 import io.intenics.python.oopCompanion.settings.OopCompanionSettingsState
 
 class InterfaceNamingConventionInspection : LocalInspectionTool() {
+
+    companion object {
+        const val SHORT_NAME = "InterfaceNamingConvention"
+    }
+
+    override fun getShortName(): String {
+        return SHORT_NAME
+    }
+
     override fun buildVisitor(
         holder: ProblemsHolder, isOnTheFly: Boolean, session: LocalInspectionToolSession
     ): PsiElementVisitor {
@@ -18,6 +27,10 @@ class InterfaceNamingConventionInspection : LocalInspectionTool() {
 
             override fun visitPyClass(pyClass: PyClass) {
                 if (pyClass.name == null) {
+                    return
+                }
+
+                if (!OopCompanionSettingsState.instance.isInterfaceNamingConventionEnabled) {
                     return
                 }
 

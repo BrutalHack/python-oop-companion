@@ -14,16 +14,22 @@
     <extensions defaultExtensionNs="com.intellij">
         <!--suppress PluginXmlValidity -->
         <localInspection language="Python"
-                         implementationClass="io.intenics.python.oopCompanion.abstractmethod.MissingAbstractMethodDecoratorInspection"
+                         implementationClass="io.intenics.python.oopCompanion.abstractMethod.MissingAbstractMethodDecoratorInspection"
                          groupPath="Python"
                          shortName="MissingAbstractMethodDecorator"
                          displayName="Empty method in ABC class should be abstract" groupName="Python"
-                         enabledByDefault="true" level="ERROR"/>
+                         enabledByDefault="true" level="WARNING"/>
         <!--suppress PluginXmlValidity -->
         <localInspection language="Python"
                          implementationClass="io.intenics.python.oopCompanion.interfaces.InterfaceNamingConventionInspection"
                          displayName="Interfaces should follow Naming Conventions" groupName="Python"
                          groupPath="Python" shortName="InterfaceNamingConvention" level="WARNING"
+                         enabledByDefault="true"/>
+        <!--suppress PluginXmlValidity -->
+        <localInspection language="Python"
+                         implementationClass="io.intenics.python.oopCompanion.interfaces.InterfaceMissingAbcInspection"
+                         displayName="Interfaces should inherit from abc.ABC" groupName="Python"
+                         groupPath="Python" shortName="InterfaceMissingAbc" level="WARNING"
                          enabledByDefault="true"/>
         <!--suppress PluginXmlValidity -->
         <annotator language="Python"

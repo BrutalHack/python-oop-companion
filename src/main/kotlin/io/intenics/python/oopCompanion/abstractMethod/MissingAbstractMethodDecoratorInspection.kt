@@ -1,4 +1,4 @@
-package io.intenics.python.oopCompanion.abstractmethod
+package io.intenics.python.oopCompanion.abstractMethod
 
 import com.intellij.codeInspection.LocalInspectionToolSession
 import com.intellij.codeInspection.ProblemHighlightType
