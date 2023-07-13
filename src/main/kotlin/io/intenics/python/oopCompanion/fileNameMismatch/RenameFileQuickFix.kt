@@ -22,7 +22,7 @@ class RenameFileQuickFix(private var expectedName: String) : LocalQuickFix {
 
     @NotNull
     override fun getFamilyName(): String {
-        return "Rename file to match the first class name"
+        return "Rename file to match any contained class name"
     }
 
     override fun applyFix(project: Project, descriptor: ProblemDescriptor) {
