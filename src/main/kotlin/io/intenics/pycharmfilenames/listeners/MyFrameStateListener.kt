@@ -1,4 +1,4 @@
-package com.github.justiceitx.pycharmfilenames.listeners
+package io.intenics.pycharmfilenames.listeners
 
 import com.intellij.ide.FrameStateListener
 import com.intellij.openapi.diagnostic.thisLogger

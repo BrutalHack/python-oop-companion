@@ -1,4 +1,4 @@
-package com.github.justiceitx.pycharmfilenames
+package io.intenics.pycharmfilenames
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls

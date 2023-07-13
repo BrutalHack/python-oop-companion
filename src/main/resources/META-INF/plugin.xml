@@ -1,18 +1,30 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.justiceitx.pycharmfilenames</id>
-    <name>pycharm-file-names Template</name>
-    <vendor>justice-itx</vendor>
+    <id>io.intenics.pycharmfilenames</id>
+    <name>Pycharm File Names</name>
+    <vendor>Intenics</vendor>
 
+    <depends>com.intellij.modules.lang</depends>
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.python</depends>
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.justiceitx.pycharmfilenames.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+        <toolWindow factoryClass="io.intenics.pycharmfilenames.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+        <localInspection language="Python"
+                         implementationClass="io.intenics.pycharmfilenames.inspections.PythonFileNameInspection"
+                         displayName="PythonFileNameInspection" groupName="PythonFileNameInspection"
+                         shortName="PythonFileNameInspection"
+                         enabledByDefault="true" level="ERROR"/>
+        <annotator language="Python"
+                   implementationClass="io.intenics.pycharmfilenames.annotator.FileNameMismatchAnnotator"
+                   id="Python File Name Mismatch"/>
+
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.justiceitx.pycharmfilenames.listeners.MyFrameStateListener" topic="com.intellij.ide.FrameStateListener"/>
+        <listener class="io.intenics.pycharmfilenames.listeners.MyFrameStateListener"
+                  topic="com.intellij.ide.FrameStateListener"/>
     </applicationListeners>
 </idea-plugin>

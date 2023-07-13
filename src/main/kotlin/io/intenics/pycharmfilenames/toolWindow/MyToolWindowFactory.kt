@@ -1,4 +1,4 @@
-package com.github.justiceitx.pycharmfilenames.toolWindow
+package io.intenics.pycharmfilenames.toolWindow
 
 import com.intellij.openapi.components.service
 import com.intellij.openapi.diagnostic.thisLogger
@@ -8,8 +8,8 @@ import com.intellij.openapi.wm.ToolWindowFactory
 import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.JBPanel
 import com.intellij.ui.content.ContentFactory
-import com.github.justiceitx.pycharmfilenames.MyBundle
-import com.github.justiceitx.pycharmfilenames.services.MyProjectService
+import io.intenics.pycharmfilenames.MyBundle
+import io.intenics.pycharmfilenames.services.MyProjectService
 import javax.swing.JButton
 
 
