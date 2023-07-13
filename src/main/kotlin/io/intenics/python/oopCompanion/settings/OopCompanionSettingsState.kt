@@ -16,7 +16,9 @@ data class OopCompanionSettingsState(
     var excludeContainPaths: String = "",
     var excludeGlobPatterns: String = "",
     var excludeRegexPatterns: String = "",
-    var isClassNameAnnotatorEnabled: Boolean = true
+    var isClassNameAnnotatorEnabled: Boolean = true,
+    var isAbstractMethodValidationEnabled: Boolean = true,
+    var isInterfaceNamingConventionEnabled: Boolean = true
 ) : PersistentStateComponent<OopCompanionSettingsState> {
 
     override fun getState(): OopCompanionSettingsState {

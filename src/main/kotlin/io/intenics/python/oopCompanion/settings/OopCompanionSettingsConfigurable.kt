@@ -1,7 +1,6 @@
 package io.intenics.python.oopCompanion.settings
 
 import com.intellij.openapi.options.SearchableConfigurable
-import org.intellij.sdk.settings.OopCompanionSettingsComponent
 import javax.swing.JComponent
 
 class OopCompanionSettingsConfigurable : SearchableConfigurable {
@@ -26,12 +25,17 @@ class OopCompanionSettingsConfigurable : SearchableConfigurable {
 
     override fun isModified(): Boolean =
         state.isClassNameAnnotatorEnabled != component!!.isClassNameAnnotatorEnabled ||
+                state.isAbstractMethodValidationEnabled != component!!.isAbstractMethodValidationEnabled ||
+                state.isInterfaceNamingConventionEnabled != component!!.isInterfaceNamingConventionEnabled ||
                 state.excludeContainPaths != component!!.excludeContainPaths ||
                 state.excludeRegexPatterns != component!!.excludeRegexPatterns ||
                 state.excludeGlobPatterns != component!!.excludeGlobPatterns
 
     override fun apply() {
         state.isClassNameAnnotatorEnabled = component!!.isClassNameAnnotatorEnabled
+        state.isAbstractMethodValidationEnabled = component!!.isAbstractMethodValidationEnabled
+        state.isInterfaceNamingConventionEnabled = component!!.isInterfaceNamingConventionEnabled
+
         state.excludeContainPaths = component!!.excludeContainPaths
         state.excludeRegexPatterns = component!!.excludeRegexPatterns
         state.excludeGlobPatterns = component!!.excludeGlobPatterns
@@ -39,9 +43,13 @@ class OopCompanionSettingsConfigurable : SearchableConfigurable {
 
     override fun reset() {
         component!!.isClassNameAnnotatorEnabled = state.isClassNameAnnotatorEnabled
+        component!!.isAbstractMethodValidationEnabled = state.isAbstractMethodValidationEnabled
+        component!!.isInterfaceNamingConventionEnabled = state.isInterfaceNamingConventionEnabled
+
         component!!.excludeContainPaths = state.excludeContainPaths
         component!!.excludeRegexPatterns = state.excludeRegexPatterns
         component!!.excludeGlobPatterns = state.excludeGlobPatterns
+
     }
 
 }

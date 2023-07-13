@@ -1,13 +1,17 @@
-// Copyright 2000-2022 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
-package org.intellij.sdk.settings
+package io.intenics.python.oopCompanion.settings
 
+import com.intellij.codeInspection.ex.InspectionProfileModifiableModel
+import com.intellij.openapi.project.ProjectManager
+import com.intellij.profile.codeInspection.InspectionProjectProfileManager
 import com.intellij.ui.TitledSeparator
 import com.intellij.ui.components.JBCheckBox
 import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.JBTextArea
 import com.intellij.util.ui.FormBuilder
+import io.intenics.python.oopCompanion.abstractmethod.MissingAbstractMethodDecoratorInspection
 import javax.swing.JComponent
 import javax.swing.JPanel
+
 
 class OopCompanionSettingsComponent {
     val panel: JPanel
@@ -15,7 +19,11 @@ class OopCompanionSettingsComponent {
     private val excludePathGlobPatternsTextArea = JBTextArea()
     private val excludePathRegexTextArea = JBTextArea()
     private val isClassNameMismatchEnabledCheckbox =
-        JBCheckBox("Show error when file name doesn't match containing classes")
+        JBCheckBox("Enable validation of file names containing classes")
+    private val isInterfaceNamingConventionEnabledCheckBox =
+        JBCheckBox("Enable validation of interface naming conventions")
+    private val isAbstractMethodValidationEnabledCheckBox =
+        JBCheckBox("Enable validation of abstract methods in ABCs (@abstractmethod)")
 
     init {
         panel = FormBuilder.createFormBuilder()
@@ -39,8 +47,24 @@ class OopCompanionSettingsComponent {
             )
             .addComponent(TitledSeparator("Feature Toggles"))
             .addComponent(isClassNameMismatchEnabledCheckbox, 1)
+            .addComponent(isAbstractMethodValidationEnabledCheckBox, 1)
+            .addComponent(isInterfaceNamingConventionEnabledCheckBox, 1)
             .addComponentFillVertically(JPanel(), 0)
             .panel
+        isAbstractMethodValidationEnabledCheckBox.addChangeListener {
+            toggleInspection(
+                isAbstractMethodValidationEnabledCheckBox.isSelected,
+                MissingAbstractMethodDecoratorInspection.SHORT_NAME
+            )
+        }
+    }
+
+    private fun toggleInspection(isEnabled: Boolean, shortName: String) {
+        val project = ProjectManager.getInstance().openProjects.first() // get current project
+        val currentProfile = InspectionProjectProfileManager.getInstance(project).currentProfile
+        val model = InspectionProfileModifiableModel(currentProfile)
+        model.setToolEnabled(shortName, isEnabled)
+        model.commit()
     }
 
     val preferredFocusedComponent: JComponent
@@ -51,6 +75,17 @@ class OopCompanionSettingsComponent {
         set(newStatus) {
             isClassNameMismatchEnabledCheckbox.setSelected(newStatus)
         }
+    var isAbstractMethodValidationEnabled: Boolean
+        get() = isAbstractMethodValidationEnabledCheckBox.isSelected
+        set(newStatus) {
+            isAbstractMethodValidationEnabledCheckBox.setSelected(newStatus)
+        }
+    var isInterfaceNamingConventionEnabled: Boolean
+        get() = isInterfaceNamingConventionEnabledCheckBox.isSelected
+        set(newStatus) {
+            isInterfaceNamingConventionEnabledCheckBox.setSelected(newStatus)
+        }
+
     var excludeContainPaths: String
         get() = excludePathContainsTextArea.text
         set(newText) {
@@ -61,7 +96,6 @@ class OopCompanionSettingsComponent {
         set(newText) {
             excludePathRegexTextArea.text = newText
         }
-
     var excludeGlobPatterns: String
         get() = excludePathGlobPatternsTextArea.text
         set(newText) {

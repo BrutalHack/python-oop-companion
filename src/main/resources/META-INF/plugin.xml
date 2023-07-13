@@ -12,10 +12,12 @@
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-<!--        <localInspection language="Python"-->
-<!--                         implementationClass="io.intenics.python.oopCompanion.inspections.FileNameMismatchInspection"-->
-<!--                         displayName="Python file name does not match class name" groupName="Python"-->
-<!--                         enabledByDefault="true" level="ERROR"/>-->
+        <!--suppress PluginXmlValidity -->
+        <localInspection language="Python"
+                         implementationClass="io.intenics.python.oopCompanion.abstractmethod.MissingAbstractMethodDecoratorInspection"
+                         shortName="MissingAbstractMethodDecorator"
+                         displayName="Empty method in ABC class should be abstract" groupName="Python"
+                         enabledByDefault="true" level="ERROR"/>
         <!--suppress PluginXmlValidity -->
         <annotator language="Python"
                    implementationClass="io.intenics.python.oopCompanion.fileNameMismatch.FileNameMismatchAnnotator"
