@@ -21,10 +21,10 @@ class RenameFileQuickFix(private val service: FileNameMismatchService) : LocalQu
     }
 
     override fun applyFix(project: Project, descriptor: ProblemDescriptor) {
-
         val refactoringFactory = RefactoringFactory.getInstance(project)
         val pyFile = descriptor.psiElement.containingFile as PyFile
         val rename = refactoringFactory.createRename(pyFile, service.expectedName)
+        rename.isPreviewUsages = true
         rename.run()
     }
 }
