@@ -21,6 +21,7 @@ class MyPluginTest : BasePlatformTestCase() {
             assertEquals("foo", it.name)
             assertEquals("bar", it.value.text)
         }
+
     }
 
     fun testRename() {
