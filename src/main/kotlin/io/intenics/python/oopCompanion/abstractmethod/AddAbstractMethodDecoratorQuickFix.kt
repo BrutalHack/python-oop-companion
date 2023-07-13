@@ -3,6 +3,7 @@ package io.intenics.python.oopCompanion.abstractmethod
 import com.intellij.codeInspection.LocalQuickFix
 import com.intellij.codeInspection.ProblemDescriptor
 import com.intellij.openapi.project.Project
+import com.intellij.psi.PsiParserFacade
 import com.jetbrains.python.psi.*
 
 class AddAbstractMethodDecoratorQuickFix : LocalQuickFix {
@@ -38,12 +39,11 @@ class AddAbstractMethodDecoratorQuickFix : LocalQuickFix {
         }
 
         if (decoratorList != null) {
-            val pythonCode = generator.createFromText(
-                LanguageLevel.forElement(pyFunction),
-                PyDecoratorList::class.java, "@$DECORATOR_NAME\ndef foo(): pass"
-            )
-            val newDecorator = pythonCode.decorators[0]
-            decoratorList.addBefore(newDecorator, decoratorList.firstChild)
+            val tempDecoratorList = generator.createDecoratorList("@$DECORATOR_NAME")
+            val newDecorator = tempDecoratorList.decorators[0]
+            val newLine = generator.createNewLine()
+            decoratorList.addAfter(newLine, decoratorList.lastChild)
+            decoratorList.addAfter(newDecorator, decoratorList.lastChild)
         } else {
             val newDecoratorList = generator.createDecoratorList("@$DECORATOR_NAME")
             pyFunction.addBefore(newDecoratorList, pyFunction.firstChild)

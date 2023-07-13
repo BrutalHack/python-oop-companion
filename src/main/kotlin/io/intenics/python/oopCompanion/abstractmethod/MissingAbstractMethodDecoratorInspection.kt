@@ -8,6 +8,7 @@ import com.jetbrains.python.inspections.PyInspection
 import com.jetbrains.python.inspections.PyInspectionVisitor
 import com.jetbrains.python.psi.PyClass
 import com.jetbrains.python.psi.PyFunction
+import io.intenics.python.oopCompanion.settings.OopCompanionSettingsState
 
 class MissingAbstractMethodDecoratorInspection : PyInspection() {
 
@@ -35,6 +36,9 @@ class MissingAbstractMethodDecoratorInspection : PyInspection() {
                 super.visitPyFunction(node)
 
                 val pyClass = node.containingClass ?: return
+                if (OopCompanionSettingsState.instance.isPathExcluded(pyClass.containingFile.virtualFile.path)) {
+                    return;
+                }
 
                 if (pyClass.isABCClass() && node.isMethodEmpty() && !node.hasAbstractMethodDecorator()) {
                     holder.registerProblem(

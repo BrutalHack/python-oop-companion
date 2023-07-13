@@ -29,7 +29,9 @@ class OopCompanionSettingsConfigurable : SearchableConfigurable {
                 state.isInterfaceNamingConventionEnabled != component!!.isInterfaceNamingConventionEnabled ||
                 state.excludeContainPaths != component!!.excludeContainPaths ||
                 state.excludeRegexPatterns != component!!.excludeRegexPatterns ||
-                state.excludeGlobPatterns != component!!.excludeGlobPatterns
+                state.excludeGlobPatterns != component!!.excludeGlobPatterns ||
+                state.interfacePrefix != component!!.interfacePrefix ||
+                state.interfaceSuffix != component!!.interfaceSuffix
 
     override fun apply() {
         state.isClassNameAnnotatorEnabled = component!!.isClassNameAnnotatorEnabled
@@ -39,6 +41,9 @@ class OopCompanionSettingsConfigurable : SearchableConfigurable {
         state.excludeContainPaths = component!!.excludeContainPaths
         state.excludeRegexPatterns = component!!.excludeRegexPatterns
         state.excludeGlobPatterns = component!!.excludeGlobPatterns
+
+        state.interfacePrefix = component!!.interfacePrefix
+        state.interfaceSuffix = component!!.interfaceSuffix
     }
 
     override fun reset() {
@@ -49,6 +54,9 @@ class OopCompanionSettingsConfigurable : SearchableConfigurable {
         component!!.excludeContainPaths = state.excludeContainPaths
         component!!.excludeRegexPatterns = state.excludeRegexPatterns
         component!!.excludeGlobPatterns = state.excludeGlobPatterns
+
+        component!!.interfacePrefix = state.interfacePrefix
+        component!!.interfaceSuffix = state.interfaceSuffix
 
     }
 

@@ -16,6 +16,8 @@ data class OopCompanionSettingsState(
     var excludeContainPaths: String = "",
     var excludeGlobPatterns: String = "",
     var excludeRegexPatterns: String = "",
+    var interfacePrefix: String = "",
+    var interfaceSuffix: String = "",
     var isClassNameAnnotatorEnabled: Boolean = true,
     var isAbstractMethodValidationEnabled: Boolean = true,
     var isInterfaceNamingConventionEnabled: Boolean = true

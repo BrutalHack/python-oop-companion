@@ -24,7 +24,7 @@ class FileNameMismatchAnnotator : Annotator {
         if (settingsState.isPathExcluded(element.containingFile.virtualFile.path)) {
             return
         }
-        if (isExcludedViaComment(element)){
+        if (isExcludedViaComment(element)) {
             return
         }
         val service = FileNameMismatchService(element)

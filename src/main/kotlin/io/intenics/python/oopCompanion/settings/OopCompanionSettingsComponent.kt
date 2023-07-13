@@ -7,9 +7,11 @@ import com.intellij.ui.TitledSeparator
 import com.intellij.ui.components.JBCheckBox
 import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.JBTextArea
+import com.intellij.ui.components.JBTextField
 import com.intellij.util.ui.FormBuilder
 import io.intenics.python.oopCompanion.abstractmethod.MissingAbstractMethodDecoratorInspection
 import javax.swing.JComponent
+import javax.swing.JLabel
 import javax.swing.JPanel
 
 
@@ -18,6 +20,8 @@ class OopCompanionSettingsComponent {
     private val excludePathContainsTextArea = JBTextArea()
     private val excludePathGlobPatternsTextArea = JBTextArea()
     private val excludePathRegexTextArea = JBTextArea()
+    private val interfaceSuffixTextField = JBTextField()
+    private val interfacePrefixTextField = JBTextField()
     private val isClassNameMismatchEnabledCheckbox =
         JBCheckBox("Enable validation of file names containing classes")
     private val isInterfaceNamingConventionEnabledCheckBox =
@@ -27,6 +31,10 @@ class OopCompanionSettingsComponent {
 
     init {
         panel = FormBuilder.createFormBuilder()
+            .addComponent(isClassNameMismatchEnabledCheckbox, 1)
+            .addComponent(isAbstractMethodValidationEnabledCheckBox, 1)
+            .addComponent(isInterfaceNamingConventionEnabledCheckBox, 1)
+            .addComponent(TitledSeparator("Exclude Paths for All Validations"))
             .addLabeledComponent(
                 JBLabel("Exclude paths containing: (one per line)"),
                 excludePathContainsTextArea,
@@ -45,10 +53,19 @@ class OopCompanionSettingsComponent {
                 1,
                 false
             )
-            .addComponent(TitledSeparator("Feature Toggles"))
-            .addComponent(isClassNameMismatchEnabledCheckbox, 1)
-            .addComponent(isAbstractMethodValidationEnabledCheckBox, 1)
-            .addComponent(isInterfaceNamingConventionEnabledCheckBox, 1)
+            .addComponent(TitledSeparator("Interface Naming Conventions"))
+            .addLabeledComponent(
+                JBLabel("Interface prefix:"),
+                interfacePrefixTextField,
+                1,
+                false
+            )
+            .addLabeledComponent(
+                JBLabel("Interface suffix:"),
+                interfaceSuffixTextField,
+                1,
+                false
+            )
             .addComponentFillVertically(JPanel(), 0)
             .panel
         isAbstractMethodValidationEnabledCheckBox.addChangeListener {
@@ -84,6 +101,17 @@ class OopCompanionSettingsComponent {
         get() = isInterfaceNamingConventionEnabledCheckBox.isSelected
         set(newStatus) {
             isInterfaceNamingConventionEnabledCheckBox.setSelected(newStatus)
+        }
+
+    var interfacePrefix: String
+        get() = interfacePrefixTextField.text
+        set(newText) {
+            interfacePrefixTextField.text = newText
+        }
+    var interfaceSuffix: String
+        get() = interfaceSuffixTextField.text
+        set(newText) {
+            interfaceSuffixTextField.text = newText
         }
 
     var excludeContainPaths: String
