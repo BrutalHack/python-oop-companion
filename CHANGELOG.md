@@ -1,6 +1,6 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# pycharm-file-names Changelog
+# python-oop-companion Changelog
 
 ## [Unreleased]
 
