@@ -54,6 +54,7 @@ qodana {
     reportPath.set(provider { file("build/reports/inspections").canonicalPath })
     saveReport.set(true)
     showReport.set(environment("QODANA_SHOW_REPORT").map { it.toBoolean() }.getOrElse(false))
+
 }
 
 // Configure Gradle Kover Plugin - read more: https://github.com/Kotlin/kotlinx-kover#configuration

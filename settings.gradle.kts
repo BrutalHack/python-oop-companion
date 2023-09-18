@@ -1,1 +1,1 @@
-rootProject.name = "pycharm-file-names"
+rootProject.name = "python-oop-companion"
